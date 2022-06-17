@@ -1,7 +1,9 @@
-<h1 align="center">This is a Profile Template</h1>
+<h1 align="center">This is a Profile Page Template</h1>
+
+<h2>Demo</h2>
+<img src="https://github.com/maoleng/media/blob/huuloc/profile-page.png?raw=true">
 
 <h2>A little note before you use:</h2>
-
 <ul>
   <h3>Best size of image</h3>
   <li><b>me.jpg</b>: 300x300px</li>
