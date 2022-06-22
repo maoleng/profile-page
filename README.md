@@ -1,6 +1,6 @@
 <h1 align="center">This is a Profile Page Template</h1>
 
-<h2>Demo</h2>
+<h2>Demo:</h2>
 <img src="https://github.com/maoleng/media/blob/huuloc/profile-page.png?raw=true">
 
 <h2>A little note before you use:</h2>
