@@ -226,7 +226,7 @@
     <!-- End Skills Section -->
 
     <!-- Status Section -->
-    <section id="status" class="lazy_bg section-padding">
+    <section id="status" class="section-padding">
         <div class="overlay"></div>
         <div class="container">
             <div class="row text-center">
@@ -794,7 +794,7 @@
     <!-- End Clients -->
 
     <!-- Contact section -->
-    <section id="contact" class="lazy_bg section-padding">
+    <section id="contact" class="section-padding">
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
@@ -835,7 +835,7 @@
                             <p class="help-block text-danger"></p>
                         </div>
                         <div id="success"></div>
-                        <button type="submit" class="btn btn-white wow bounceIn">Send Message</button>
+                        <button id="send_message" type="button" class="btn btn-white wow bounceIn">Send Message</button>
                     </div>
                 </form>
                 <div class="clearfix"></div>
@@ -893,64 +893,13 @@
     <!-- Owl Carousel JS -->
     <script src="assets/js/owl.carousel.min.js"></script>
     <!-- Contact Form JS -->
-    <script src="assets/js/jqBootstrapValidation.js"></script>
     <script src="assets/js/contact_me.js"></script>
     <!-- Lazy Load JS -->
     <script src="assets/js/jquery.lazyload.min.js"></script>
     <!-- Custom JS -->
     <script src="assets/js/scripts.js"></script>
     <script type="text/javascript">
-        $(".lazy").lazyload()
-       document.addEventListener("DOMContentLoaded", function() {
-  var lazyloadImages;    
-
-  if ("IntersectionObserver" in window) {
-    lazyloadImages = document.querySelectorAll(".lazy_bg");
-    var imageObserver = new IntersectionObserver(function(entries, observer) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          var image = entry.target;
-          image.classList.remove("lazy_bg");
-          imageObserver.unobserve(image);
-        }
-      });
-    });
-
-    lazyloadImages.forEach(function(image) {
-      imageObserver.observe(image);
-    });
-  } else {  
-    var lazyloadThrottleTimeout;
-    lazyloadImages = document.querySelectorAll(".lazy_bg");
-    
-    function lazyload () {
-      if(lazyloadThrottleTimeout) {
-        clearTimeout(lazyloadThrottleTimeout);
-      }    
-
-      lazyloadThrottleTimeout = setTimeout(function() {
-        var scrollTop = window.pageYOffset;
-        lazyloadImages.forEach(function(img) {
-            if(img.offsetTop < (window.innerHeight + scrollTop)) {
-              img.src = img.dataset.src;
-              img.classList.remove('lazy_bg');
-            }
-        });
-        if(lazyloadImages.length == 0) { 
-          document.removeEventListener("scroll", lazyload);
-          window.removeEventListener("resize", lazyload);
-          window.removeEventListener("orientationChange", lazyload);
-        }
-      }, 20);
-    }
-
-    document.addEventListener("scroll", lazyload);
-    window.addEventListener("resize", lazyload);
-    window.addEventListener("orientationChange", lazyload);
-  }
-})
-
-
+      $(".lazy").lazyload()
     </script>
 
 
