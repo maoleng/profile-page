@@ -57,13 +57,6 @@
     <!-- Main Style CSS -->
     <link href="assets/css/style.css" rel="stylesheet">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEHLT3PWMD"></script>
@@ -233,7 +226,7 @@
     <!-- End Skills Section -->
 
     <!-- Status Section -->
-    <section id="status" class="lazy section-padding">
+    <section id="status" class="lazy_bg section-padding">
         <div class="overlay"></div>
         <div class="container">
             <div class="row text-center">
@@ -801,7 +794,7 @@
     <!-- End Clients -->
 
     <!-- Contact section -->
-    <section id="contact" class="lazy section-padding">
+    <section id="contact" class="lazy_bg section-padding">
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
@@ -908,6 +901,56 @@
     <script src="assets/js/scripts.js"></script>
     <script type="text/javascript">
         $(".lazy").lazyload()
+       document.addEventListener("DOMContentLoaded", function() {
+  var lazyloadImages;    
+
+  if ("IntersectionObserver" in window) {
+    lazyloadImages = document.querySelectorAll(".lazy_bg");
+    var imageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var image = entry.target;
+          image.classList.remove("lazy_bg");
+          imageObserver.unobserve(image);
+        }
+      });
+    });
+
+    lazyloadImages.forEach(function(image) {
+      imageObserver.observe(image);
+    });
+  } else {  
+    var lazyloadThrottleTimeout;
+    lazyloadImages = document.querySelectorAll(".lazy_bg");
+    
+    function lazyload () {
+      if(lazyloadThrottleTimeout) {
+        clearTimeout(lazyloadThrottleTimeout);
+      }    
+
+      lazyloadThrottleTimeout = setTimeout(function() {
+        var scrollTop = window.pageYOffset;
+        lazyloadImages.forEach(function(img) {
+            if(img.offsetTop < (window.innerHeight + scrollTop)) {
+              img.src = img.dataset.src;
+              img.classList.remove('lazy_bg');
+            }
+        });
+        if(lazyloadImages.length == 0) { 
+          document.removeEventListener("scroll", lazyload);
+          window.removeEventListener("resize", lazyload);
+          window.removeEventListener("orientationChange", lazyload);
+        }
+      }, 20);
+    }
+
+    document.addEventListener("scroll", lazyload);
+    window.addEventListener("resize", lazyload);
+    window.addEventListener("orientationChange", lazyload);
+  }
+})
+
+
     </script>
 
 
